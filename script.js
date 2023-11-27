@@ -103,47 +103,54 @@ function getPasswordOptions() {
         includeUppercase: includeUppercase,
         includeNumeric: includeNumeric,
         includeSpecial: includeSpecial,
-    }; 
+    };
 }
-
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-    const randomIndex = Math.random * arr.length; 
-    return arr[randomIndex]
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
 }
 
 // Function to generate password with user input
 function generatePassword() {
-    const options = getPasswordCriteria();
+    const options = getPasswordOptions();
 
-    const avaliableChars = []
+    const avaliableChars = [];
     if (options.includeLowercase) avaliableChars.push(...lowerCasedCharacters);
     if (options.includeUppercase) avaliableChars.push(...upperCasedCharacters);
     if (options.includeNumeric) avaliableChars.push(...numericCharacters);
     if (options.includeSpecial) avaliableChars.push(...specialCharacters);
 
     if (avaliableChars.length === 0) {
-        alert("You must select at least one character type."); 
-        return " "; 
+        alert("You must select at least one character type.");
+        return " ";
     }
 
     let generatedPassword = " ";
-    for (let i = 0; i < options.lenth; i++) {
+    for (let i = 0; i < options.length; i++) {
         const randomChar = getRandom(avaliableChars);
         generatedPassword += randomChar;
     }
 
-   return generatedPassword; 
-} 
-
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
-function generateDisplayPassword () { 
+    return generatedPassword;
 }
+// Get references to the #generate element
 
-// add failed to generate password error alert 
-
+function displayPassword(password) {
+    alert("Generated Password: " + password);
+    console.log("Generated Password: " + password);
+    
+}
+var generateBtn = document.querySelector('#generate');
+function generateDisplayPassword() {
+    const passwordOutput = generatePassword();
+    if (passwordOutput !== " ") {
+        displayPassword(passwordOutput);
+    } else {
+        alert("Failed to generate password.");
+    }
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -151,6 +158,11 @@ function writePassword() {
     var passwordText = document.querySelector('#password');
 
     passwordText.value = password;
+}
+
+function displayPassword(password) {
+    alert("Generated Password: " + password);
+
 }
 
 // Add event listener to generate button
