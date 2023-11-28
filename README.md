@@ -13,7 +13,7 @@ Code should validate for each input and at least one character type should be se
 Once all prompts are answered, the password is logged in the console. 
 
 ## Screencast:
-https://watch.screencastify.com/v/83ZFFf8DpVsAIwSEy8Mf 
+https://watch.screencastify.com/v/Mtb9XyHdbZXh5uizq5vN 
 
 ## Deployable URL:
 https://celiahouston.github.io/Random-Password-Generator/ 
