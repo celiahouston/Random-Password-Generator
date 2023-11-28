@@ -162,7 +162,6 @@ if (passwordOutput !== "") {
 }
 
 function generateDisplayPassword() {
-    // const passwordOutput = generatePassword();
     if (passwordOutput !== "") {
         displayPassword(passwordOutput);
     } else {
