@@ -15,6 +15,7 @@ Once all prompts are answered, the password is logged in the console.
 ## Screencast:
 
 ## Deployable URL:
+https://celiahouston.github.io/Random-Password-Generator/ 
 
 ## License 
 Please refer to the LICENSE in the repo.
