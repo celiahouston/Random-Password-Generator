@@ -22,7 +22,7 @@ var specialCharacters = [
     '-',
     '_',
     '.'
-];
+]; 
 
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -86,9 +86,9 @@ var upperCasedCharacters = [
 
 function getPasswordCriteria() {
     let passwordLength = parseInt(window.prompt("Enter desired length of the password (between 8 and 128 characters):"));
-  
+
     while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-      passwordLength = parseInt(window.prompt("Please enter a valid password length between 8 and 128:"));
+        passwordLength = parseInt(window.prompt("Please enter a valid password length between 8 and 128:"));
     }
 
     const includeLowercase = window.confirm("Would you like to include lowercase letters?");
@@ -98,10 +98,10 @@ function getPasswordCriteria() {
 
     return {
         length: passwordLength,
-        includeLowercase: includeLowercase,
-        includeUppercase: includeUppercase,
-        includeNumeric: includeNumeric,
-        includeSpecial: includeSpecial,
+        includeLowercaseCharacters: includeLowercase,
+        includeUppercaseCharacters: includeUppercase,
+        includeNumericCharacters: includeNumeric,
+        includeSpecialCharacters: includeSpecial,
     };
 }
 
@@ -114,10 +114,10 @@ function generatePassword() {
     const options = getPasswordCriteria();
 
     const availableChars = [];
-    if (options.includeLowercase) availableChars.push(...lowerCasedCharacters);
-    if (options.includeUppercase) availableChars.push(...upperCasedCharacters);
-    if (options.includeNumeric) availableChars.push(...numericCharacters);
-    if (options.includeSpecial) availableChars.push(...specialCharacters);
+    if (options.includeLowercaseCharacters) availableChars.push(...lowerCasedCharacters);
+    if (options.includeUppercaseCharacters) availableChars.push(...upperCasedCharacters);
+    if (options.includeNumericCharacters) availableChars.push(...numericCharacters);
+    if (options.includeSpecialCharacters) availableChars.push(...specialCharacters);
 
     if (availableChars.length === 0) {
         alert("You must select at least one character type.");
@@ -133,6 +133,27 @@ function generatePassword() {
     return generatedPassword;
 }
 
+function displayPassword(password) {
+    const passwordTextArea = document.getElementById("password");
+    if (passwordTextArea) {
+        passwordTextArea.value = password;
+    } else {
+        console.error("Textarea with ID password not found."); 
+    }
+}
+
+function writePassword() {
+    var password = generatePassword();
+    displayPassword(password); 
+}
+
+var generateBtn = document.querySelector('#generate');
+if (generateBtn) {
+    generateBtn.addEventListener("click", writePassword);
+} else {
+    console.error("#generate button not found.")
+}
+
 const passwordOutput = generatePassword();
 if (passwordOutput !== "") {
     console.log("Generated Password: ", passwordOutput);
@@ -141,7 +162,7 @@ if (passwordOutput !== "") {
 }
 
 function generateDisplayPassword() {
-    const passwordOutput = generatePassword();
+    // const passwordOutput = generatePassword();
     if (passwordOutput !== "") {
         displayPassword(passwordOutput);
     } else {
@@ -150,7 +171,7 @@ function generateDisplayPassword() {
 }
 
 function displayPassword(password) {
-    alert("Generated password: " + password); 
+    alert("Generated password: " + password);
     const passwordTextArea = document.getElementById("password");
     if (passwordTextArea) {
         passwordTextArea.value = password;
