@@ -22,7 +22,7 @@ var specialCharacters = [
     '-',
     '_',
     '.'
-]; 
+];
 
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -138,34 +138,44 @@ function displayPassword(password) {
     if (passwordTextArea) {
         passwordTextArea.value = password;
     } else {
-        console.error("Textarea with ID password not found."); 
+        console.error("Textarea with ID password not found.");
     }
 }
 
 function writePassword() {
     var password = generatePassword();
-    displayPassword(password); 
+    displayPassword(password);
 }
 
-// var generateBtn = document.querySelector('#generate');
-// if (generateBtn) {
-//     generateBtn.addEventListener("click", writePassword);
-// } else {
-//     console.error("#generate button not found.")
-// }
+document.addEventListener("DOMContentLoaded", function () {
+    var generateBtn = document.querySelector("#generate");
 
-const passwordOutput = generatePassword();
-if (passwordOutput !== "") {
-    console.log("Generated Password: ", passwordOutput);
-} else {
-    console.error("Password failed to generate.")
-}
+    generateBtn.addEventListener("click", writePassword);
 
+    function writePassword() {
+        var password = generatePassword();
+        var passwordText = document.querySelector("#password");
+
+        if (passwordText) {
+            passwordText.value = password;
+        } else {
+            console.error("Password input not found.");
+        }
+    }
+
+    const passwordOutput = generatePassword();
+    if (passwordOutput !== "") {
+        console.log("Generated Password: ", passwordOutput);
+    } else {
+        console.error("Password failed to generate.");
+    }
+}) 
 function generateDisplayPassword() {
+    const passwordOutput = generatePassword();
     if (passwordOutput !== "") {
         displayPassword(passwordOutput);
     } else {
-        console.error("password failed to generate.");
+        console.error("Password failed to generate.");
     }
 }
 
@@ -177,4 +187,4 @@ function displayPassword(password) {
     } else {
         console.error("Textarea with ID password not found.");
     }
-} 
+}; 
