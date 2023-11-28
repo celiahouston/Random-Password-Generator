@@ -147,12 +147,12 @@ function writePassword() {
     displayPassword(password); 
 }
 
-var generateBtn = document.querySelector('#generate');
-if (generateBtn) {
-    generateBtn.addEventListener("click", writePassword);
-} else {
-    console.error("#generate button not found.")
-}
+// var generateBtn = document.querySelector('#generate');
+// if (generateBtn) {
+//     generateBtn.addEventListener("click", writePassword);
+// } else {
+//     console.error("#generate button not found.")
+// }
 
 const passwordOutput = generatePassword();
 if (passwordOutput !== "") {
