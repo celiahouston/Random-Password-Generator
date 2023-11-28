@@ -2,7 +2,7 @@
 
 In this challenge I created a webpage that generates a random password based on specific user criteria. The webpage uses HTML, CSS and JavaScript code. The HTML and CSS create a user friendly interface. I used alerts to make the generating of the password simple and straight forward. I also used if/else statements to ensure the password criteria would be met. 
 
-The webpage presents a series of prompts for password criteria:
+**The webpage presents a series of prompts for password criteria:**
 
 Length of password: At least 8 characters but no more than 128.
 
